@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <ListaSimple.h>
+#include "ListaSimple.h"
 
 
 Nodo* crearNodo() {
@@ -123,6 +123,7 @@ void mostrarLista(ListaSimple *lista) {
 
 void liberarNodo(Nodo *nodo) {
     if (nodo != NULL) {
+        free(nodo->alumno);
         free(nodo);
     }
 }
@@ -152,7 +153,7 @@ int borrarPos(ListaSimple *lista, int pos){
     temp1 = buscarNodo(lista, pos-1);
     Nodo *nodoAborrar = buscarNodo(lista, pos);
     temp1->sig = nodoAborrar->sig;
-    free(nodoAborrar);
+    liberarNodo(nodoAborrar);
     if(pos == lista->size-1){
         lista->tail = temp1;
     }

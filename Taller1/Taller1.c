@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <ListaSimple.h>
+#include "ListaSimple.h"
 
 int main() {
     srand(time(NULL));
@@ -34,6 +34,8 @@ int main() {
     printf("Lista de alumnos despues de las bajas:\n");
     printf("--------------------------------------\n");
     mostrarLista(salon);
+
+    liberarLista(salon);
 
     return 0;
 }
